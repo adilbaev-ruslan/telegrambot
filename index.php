@@ -40,6 +40,14 @@ if ($text == '/start') {
 			'message_id' => $message_id,
 		]
 	);
+} else {
+	bot(
+		'sendMessage',
+		[
+			'chat_id' => $chat_id,
+			'text' => 'Hello',
+		],
+	);
 }
 
 ?>
