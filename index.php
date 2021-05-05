@@ -1,5 +1,5 @@
 <?php 
-// https://api.telegram.org/bot{token}/setWebhook?url=kjfd
+// https://api.telegram.org/bot1749333819:AAFGoeVJ8zVuxHTZy9vcRDFbiZD2V7TWMrk/setWebhook?url=https://web2telegramchanell.herokuapp.com/
 
 $token = '1749333819:AAFGoeVJ8zVuxHTZy9vcRDFbiZD2V7TWMrk';
 define('API_KEY', $token);
@@ -22,6 +22,7 @@ $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
 $text = $message->text;
 $chat_id = $message->chat->id;
+$message_id = $message->message_id;
 
 if ($text == '/start') {
 	bot(
@@ -29,7 +30,15 @@ if ($text == '/start') {
 		[
 			'chat_id' => $chat_id,
 			'text' => 'Bul birinshi zapros',
-		],
+		]
+	);
+} elseif ($text) {
+	bot(
+		'deleteMessage',
+		[
+			'chat_id' => $chat_id,
+			'message_id' => $message_id,
+		]
 	);
 }
 
